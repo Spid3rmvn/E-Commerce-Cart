@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Layout from "../components/Layout";
-import ProductList from "../components/ProductList";
-import Cart from "../components/Cart";
+import Layout from '../Components/Layout';
+import ProductList from '../Components/ProductList';
+import Cart from '../Components/Cart';
 
 const Index = () => {
   const [products] = useState([
