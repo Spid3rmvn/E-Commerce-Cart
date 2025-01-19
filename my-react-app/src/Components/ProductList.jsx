@@ -1,23 +1,29 @@
-// ProductList component - Displays the grid of products
-import ProductCard from "./ProductCard";
-
-const ProductList = ({ products, onAddToCart }) => {
-  return (
-    <div>
-      <h2 className="text-2xl font-semibold mb-6">Available Products</h2>
-      {/* Grid layout for products */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Map through products and render ProductCard for each */}
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAddToCart={onAddToCart}
-          />
-        ))}
+function ProductList({ products, onAddToCart }) {
+    if (products.length === 0) {
+      return (
+        <div className="product-list">
+          <h2>Products</h2>
+          <p className="no-products">No products found</p>
+        </div>
+      )
+    }
+  
+    return (
+      <div className="product-list">
+        <h2>Products</h2>
+        <div className="products">
+          {products.map(product => (
+            <div key={product.id} className="product-card">
+              <h3>{product.name}</h3>
+              <p>${product.price}</p>
+              <button onClick={() => onAddToCart(product)}>
+                Add to Cart
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default ProductList;
+    )
+  }
+  
+  export default ProductList
