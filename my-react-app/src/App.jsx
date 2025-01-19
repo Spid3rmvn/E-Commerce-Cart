@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
-import { products } from "./data/products";
+import { products } from "./data/product";
 import "./App.css";
 
 const App = () => {
