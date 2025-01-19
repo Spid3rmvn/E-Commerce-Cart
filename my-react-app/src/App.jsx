@@ -9,8 +9,24 @@ const products = [
   { id: 2, name: "Jeans", price: 40 },
   { id: 3, name: "Sneakers", price: 60 },
   { id: 4, name: "Hat", price: 15 },
-  { id: 5, name: "Socks", price: 5 }
+  { id: 5, name: "Socks", price: 5 },
+  { id: 6, name: "Backpack", price: 30 },
+  { id: 7, name: "Jacket", price: 70 },
+  { id: 8, name: "Scarf", price: 12 },
+  { id: 9, name: "Gloves", price: 8 },
+  { id: 10, name: "Watch", price: 120 },
+  { id: 11, name: "Sweater", price: 50 },
+  { id: 12, name: "Shorts", price: 25 },
+  { id: 13, name: "Belt", price: 18 },
+  { id: 14, name: "Boots", price: 85 },
+  { id: 15, name: "Cap", price: 10 },
+  { id: 16, name: "Shirt", price: 22 },
+  { id: 17, name: "Pants", price: 38 },
+  { id: 18, name: "Sunglasses", price: 45 },
+  { id: 19, name: "Flip-Flops", price: 15 },
+  { id: 20, name: "Hoodie", price: 55 }
 ].sort((a, b) => a.name.localeCompare(b.name))
+
 
 function App() {
   // State for cart, initialized from localStorage if available
