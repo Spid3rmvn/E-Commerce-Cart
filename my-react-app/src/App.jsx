@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import ProductList from './components/ProductList'
-import Cart from './components/Cart'
+import ProductList from './Components/ProductList'
+import Cart from './Components/Cart'
 
 const products = [
   { id: 1, name: "T-Shirt", price: 20 },
