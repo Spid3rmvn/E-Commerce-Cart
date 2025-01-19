@@ -26,4 +26,4 @@ function ProductList({ products, onAddToCart }) {
     )
   }
   
-  export default ProductList
+  export default ProductList;

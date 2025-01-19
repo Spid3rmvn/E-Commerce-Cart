@@ -9,15 +9,13 @@ const products = [
   { id: 3, name: "Sneakers", price: 60 },
   { id: 4, name: "Hat", price: 15 },
   { id: 5, name: "Socks", price: 5 }
-]
+].sort((a, b) => a.name.localeCompare(b.name))
 
 function App() {
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart')
     return savedCart ? JSON.parse(savedCart) : []
   })
-  const [sortBy, setSortBy] = useState('name')
-  const [sortDirection, setSortDirection] = useState('asc')
   const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
@@ -56,30 +54,9 @@ function App() {
     )
   }
 
-  const sortProducts = (products) => {
-    return [...products].sort((a, b) => {
-      const modifier = sortDirection === 'asc' ? 1 : -1
-      if (sortBy === 'name') {
-        return modifier * a.name.localeCompare(b.name)
-      }
-      return modifier * (a.price - b.price)
-    })
-  }
-
-  const filteredAndSortedProducts = sortProducts(
-    products.filter(product => 
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+  const filteredProducts = products.filter(product => 
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
   )
-
-  const handleSort = (field) => {
-    if (field === sortBy) {
-      setSortDirection(current => current === 'asc' ? 'desc' : 'asc')
-    } else {
-      setSortBy(field)
-      setSortDirection('asc')
-    }
-  }
 
   return (
     <div className="app">
@@ -92,24 +69,10 @@ function App() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
         />
-        <div className="sort-buttons">
-          <button 
-            onClick={() => handleSort('name')}
-            className={`sort-btn ${sortBy === 'name' ? 'active' : ''}`}
-          >
-            Sort by Name {sortBy === 'name' && (sortDirection === 'asc' ? '↑' : '↓')}
-          </button>
-          <button 
-            onClick={() => handleSort('price')}
-            className={`sort-btn ${sortBy === 'price' ? 'active' : ''}`}
-          >
-            Sort by Price {sortBy === 'price' && (sortDirection === 'asc' ? '↑' : '↓')}
-          </button>
-        </div>
       </div>
       <div className="container">
         <ProductList 
-          products={filteredAndSortedProducts} 
+          products={filteredProducts} 
           onAddToCart={addToCart} 
         />
         <Cart 

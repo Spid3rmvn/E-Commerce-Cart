@@ -11,9 +11,7 @@
   .search-sort {
     margin-bottom: 2rem;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
+    justify-content: center;
   }
   
   .search-input {
@@ -23,35 +21,6 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-  }
-  
-  .sort-buttons {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .sort-btn {
-    background-color: #e0e0e0;
-    border: 2px solid #d0d0d0;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .sort-btn:hover {
-    background-color: #d0d0d0;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  }
-  
-  .sort-btn.active {
-    background-color: #2ecc71;
-    border-color: #27ae60;
-    color: white;
-    box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
-  }
-  
-  .sort-btn.active:hover {
-    background-color: #27ae60;
   }
   
   .container {

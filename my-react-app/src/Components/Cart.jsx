@@ -49,4 +49,4 @@ function Cart({ cart, onRemove, onUpdateQuantity }) {
     )
   }
   
-  export default Cart
+  export default Cart;
