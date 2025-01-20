@@ -1,3 +1,5 @@
+import React from 'react';
+
 function ProductList({ products, onAddToCart }) {
   // If there are no products, display a message indicating that
   if (products.length === 0) {

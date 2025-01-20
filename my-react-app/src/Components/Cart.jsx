@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Cart({ cart, onRemove, onUpdateQuantity }) {
   // Calculate the total price of the items in the cart
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
