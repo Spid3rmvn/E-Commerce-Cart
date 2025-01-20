@@ -8,7 +8,7 @@ function ProductList({ products, onAddToCart }) {
         <h2>Products</h2>
         <p className="no-products">No products found</p> {/* Display message if no products match the search */}
       </div>
-    )
+    );
   }
 
   // Render the list of products
@@ -21,14 +21,17 @@ function ProductList({ products, onAddToCart }) {
           <div key={product.id} className="product-card">
             <h3>{product.name}</h3> {/* Display product name */}
             <p>${product.price}</p> {/* Display product price */}
-            <button onClick={() => onAddToCart(product)}> {/* Add to cart button */}
+            <button 
+              onClick={() => onAddToCart(product)} 
+              className="add-to-cart-btn"
+            >
               Add to Cart
             </button>
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default ProductList;
