@@ -103,13 +103,3 @@
   color: #333;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-  
-  .search-input {
-    width: 90%;
-  }
-}
