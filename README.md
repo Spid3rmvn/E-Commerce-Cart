@@ -193,11 +193,10 @@ src/
 - Responsive buttons with hover effects
 - Intuitive quantity controls
 - Clear visual feedback
+- Intuitive quantity controls
+- Clear visual feedback
+
 
 ---
 Feel free to contribute or open issues to improve this project!
-
-
-- Intuitive quantity controls
-- Clear visual feedback
 
