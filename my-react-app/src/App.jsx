@@ -1,4 +1,3 @@
-// Import React only
 import React from 'react'
 import './App.css'
 
@@ -26,25 +25,24 @@ const products = [
   { id: 20, name: "Wallet", price: 39.99 }
 ]
 
-// Create a class that extends React.Component
+// Create a class component
 class App extends React.Component {
-  // Constructor to initialize our data
+  // Constructor to initialize state variables
   constructor() {
     super()
-    this.cart = []
-    this.searchText = ''
+    this.cart = [] // Stores the items in the cart
+    this.searchText = '' // Stores the search input text
   }
 
-  // Function to add items to cart
+  // Function to add items to the cart
   addToCart(product) {
-    
     const foundItem = this.cart.find(item => item.id === product.id)
 
     if (foundItem) {
-    
-      foundItem.quantity = foundItem.quantity + 1
+      // If item exists in cart, increase its quantity
+      foundItem.quantity += 1
     } else {
-      
+      // If item is not in the cart, add it with quantity 1
       this.cart.push({
         id: product.id,
         name: product.name,
@@ -53,24 +51,25 @@ class App extends React.Component {
       })
     }
 
-    // Tell React to update the screen
+    // Force React to update the UI
     this.forceUpdate()
   }
 
-  // Function to remove items from cart
+  // Function to remove items from the cart
   removeFromCart(productId) {
     this.cart = this.cart.filter(item => item.id !== productId)
-    this.forceUpdate()
+    this.forceUpdate() // Update the UI after removing item
   }
 
-  // Function to update quantity
+  // Function to update item quantity in the cart
   updateQuantity(productId, newQuantity) {
     if (newQuantity < 1) {
+      // If quantity is less than 1, remove the item from cart
       this.removeFromCart(productId)
       return
     }
 
-    // Update the quantity
+    // Update the quantity of the specific item
     this.cart = this.cart.map(item => {
       if (item.id === productId) {
         return { ...item, quantity: newQuantity }
@@ -78,18 +77,18 @@ class App extends React.Component {
       return item
     })
 
-    // Tell React to update the screen
+    // Force UI update
     this.forceUpdate()
   }
 
-  // Function to handle search
+  // Function to handle search input change
   handleSearch(event) {
     this.searchText = event.target.value
-    this.forceUpdate()
+    this.forceUpdate() // Update UI with search results
   }
 
   render() {
-    // Calculate total price
+    // Calculate total price of all items in cart
     const total = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
     // Filter products based on search text
@@ -117,6 +116,7 @@ class App extends React.Component {
           <div className="product-list">
             <h2>Products</h2>
             <div className="products">
+              {/* Display each product */}
               {filteredProducts.map(product => (
                 <div key={product.id} className="product-card">
                   <h3>{product.name}</h3>
@@ -136,6 +136,7 @@ class App extends React.Component {
               <p>Your cart is empty</p>
             ) : (
               <>
+                {/* Display each item in the cart */}
                 {this.cart.map(item => (
                   <div key={item.id} className="cart-item">
                     <div className="item-info">
@@ -143,6 +144,7 @@ class App extends React.Component {
                       <p>${item.price}</p>
                     </div>
                     <div className="item-controls">
+                      {/* Decrease quantity button */}
                       <button 
                         onClick={() => this.updateQuantity(item.id, item.quantity - 1)}
                         className="quantity-btn"
@@ -150,12 +152,14 @@ class App extends React.Component {
                         -
                       </button>
                       <span>{item.quantity}</span>
+                      {/* Increase quantity button */}
                       <button 
                         onClick={() => this.updateQuantity(item.id, item.quantity + 1)}
                         className="quantity-btn"
                       >
                         +
                       </button>
+                      {/* Remove item button */}
                       <button 
                         onClick={() => this.removeFromCart(item.id)}
                         className="remove-btn"
@@ -165,6 +169,7 @@ class App extends React.Component {
                     </div>
                   </div>
                 ))}
+                {/* Display total price */}
                 <div className="cart-total">
                   <h3>Total: ${total.toFixed(2)}</h3>
                 </div>
@@ -177,4 +182,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default App;
